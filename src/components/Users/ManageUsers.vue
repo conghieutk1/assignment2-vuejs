@@ -336,7 +336,7 @@ export default {
             this.formData = {};
             this.show = !this.show;
         },
-        submitForm() {
+        async submitForm() {
             if (this.validation()) {
                 const formData = {
                     name: this.formData.userName,
@@ -345,10 +345,8 @@ export default {
                     phone: this.formData.phoneNumber,
                     avatar: this.formData.avatar,
                 };
-                // this.$emit('save-data', formData);
-                this.$store.dispatch('users/addNewUser', formData);
-
-                // this.$router.replace('/manage-user');
+                await this.$store.dispatch('users/addNewUser', formData);
+                await this.$refs.BaseTable.fetchDataWhenChanged();
                 // clear data
                 (this.formData.userName = ''),
                     (this.formData.email = ''),
@@ -375,11 +373,8 @@ export default {
                     phone: this.formData.phoneNumber,
                     avatar: this.formData.avatar,
                 };
-                // this.$emit('save-data', formData);
                 await this.$store.dispatch('users/editUser', formData);
-                // this.$router.replace('/manage-user');
-                // this.$emit('fetch-data-page');
-                this.$refs.BaseTable.fetchDataWhenChanged();
+                await this.$refs.BaseTable.fetchDataWhenChanged();
                 // close modal
                 this.showEdit = false;
                 Swal.fire({
@@ -412,8 +407,7 @@ export default {
                     await this.$store.dispatch('users/deleteUser', {
                         id: item.id,
                     });
-                    // this.getAllUsers(); // Uncomment if you need to refresh the list of users
-                    this.$refs.BaseTable.fetchDataWhenChanged();
+                    await this.$refs.BaseTable.fetchDataWhenChanged();
                     Swal.fire({
                         title: 'Xoá người dùng',
                         text: 'Thành công',

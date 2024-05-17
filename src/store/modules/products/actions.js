@@ -73,9 +73,6 @@ export default {
         }
     },
     async getAllProducts(context) {
-        if (!context.getters.shouldUpdate) {
-            return;
-        }
         const response = await fetch(
             `https://vue-project-assignmentw2-4-default-rtdb.asia-southeast1.firebasedatabase.app/products.json`
         );
@@ -98,7 +95,6 @@ export default {
             products.push(product);
         }
         context.commit('setProducts', products);
-        context.commit('setFetchTimestamp');
     },
     async getProductsForPage(context, payload) {
         const response = await fetch(
@@ -131,7 +127,6 @@ export default {
             paginatedProducts.push(product);
         }
         context.commit('setPaginatedProducts', paginatedProducts);
-        context.commit('setFetchTimestamp');
     },
     // async searchProduct(context, payload) {},
 };

@@ -28,7 +28,4 @@ export default {
     setPaginatedUsers(state, payload) {
         state.paginatedUsers = payload;
     },
-    setFetchTimestamp(state) {
-        state.lastFetch = new Date().getTime();
-    },
 };

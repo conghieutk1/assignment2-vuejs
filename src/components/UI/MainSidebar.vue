@@ -346,10 +346,10 @@ export default {
         },
         directToManageUser() {
             // có thể dùng route-link thay cho hàm này
-            this.$router.push('/manage-user');
+            this.$router.replace('/manage-user');
         },
         directToManageProduct() {
-            this.$router.push('/manage-product');
+            this.$router.replace('/manage-product');
         },
     },
 };

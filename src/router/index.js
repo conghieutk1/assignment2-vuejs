@@ -15,6 +15,7 @@ const router = createRouter({
             path: '/login',
             components: { default: Login },
             meta: { requiresUnauth: true },
+            alias: '/signin',
         },
         {
             name: 'signup',

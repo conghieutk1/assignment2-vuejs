@@ -88,7 +88,7 @@ export default {
             this.$router.replace(redirectUrl);
         },
         gotoLogin() {
-            this.$router.push('/login');
+            this.$router.replace('/login');
         },
     },
 };

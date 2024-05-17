@@ -97,7 +97,7 @@ export default {
             this.$router.replace('/manage-user');
         },
         gotoSignUp() {
-            this.$router.push('/sign-up');
+            this.$router.replace('/sign-up');
         },
     },
 };

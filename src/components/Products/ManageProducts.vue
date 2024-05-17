@@ -350,7 +350,7 @@ export default {
             }
             return true;
         },
-        submitForm() {
+        async submitForm() {
             if (this.validation()) {
                 const formData = {
                     name: this.formData.productName,
@@ -359,10 +359,8 @@ export default {
                     descript: this.formData.description,
                     image: this.formData.image,
                 };
-                console.log('formData = ', formData);
-                // this.$emit('save-data', formData);
-                this.$store.dispatch('products/addNewProduct', formData);
-                this.$router.replace('/manage-product');
+                await this.$store.dispatch('products/addNewProduct', formData);
+                await this.$refs.BaseTable.fetchDataWhenChanged();
                 // clear data
                 (this.formData.productName = ''),
                     (this.formData.price = ''),
@@ -383,12 +381,8 @@ export default {
                     descript: this.formData.description,
                     image: this.formData.image,
                 };
-                console.log('formData = ', formData);
-                // this.$emit('save-data', formData);
                 await this.$store.dispatch('products/editProduct', formData);
-                // // this.$router.replace('/manage-user');
-                // this.getAllProducts();
-                this.$refs.BaseTable.fetchDataWhenChanged();
+                await this.$refs.BaseTable.fetchDataWhenChanged();
                 // close modal
                 this.showEdit = false;
                 Swal.fire({
@@ -421,8 +415,7 @@ export default {
                     await this.$store.dispatch('products/deleteProduct', {
                         id: item.id,
                     });
-                    // this.getAllUsers(); // Uncomment if you need to refresh the list of users
-                    this.$refs.BaseTable.fetchDataWhenChanged();
+                    await this.$refs.BaseTable.fetchDataWhenChanged();
                     Swal.fire({
                         title: 'Xoá sản phẩm',
                         text: 'Thành công',

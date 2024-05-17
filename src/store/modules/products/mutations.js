@@ -32,7 +32,4 @@ export default {
     setPaginatedProducts(state, payload) {
         state.paginatedProducts = payload;
     },
-    setFetchTimestamp(state) {
-        state.lastFetch = new Date().getTime();
-    },
 };

@@ -71,10 +71,6 @@ export default {
         }
     },
     async getAllUsers(context) {
-        if (!context.getters.shouldUpdate) {
-            return;
-        }
-
         const response = await fetch(
             `https://vue-project-assignmentw2-4-default-rtdb.asia-southeast1.firebasedatabase.app/users.json`
         );
@@ -98,7 +94,6 @@ export default {
         }
 
         context.commit('setUsers', users);
-        context.commit('setFetchTimestamp');
     },
     async getUsersForPage(context, payload) {
         const response = await fetch(
@@ -133,7 +128,6 @@ export default {
             paginatedUsers.push(user);
         }
         context.commit('setPaginatedUsers', paginatedUsers);
-        context.commit('setFetchTimestamp');
     },
     searchInfoUser() {},
 };

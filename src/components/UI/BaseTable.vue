@@ -171,9 +171,6 @@ export default {
             }
         },
         async fetchDataWhenChanged() {
-            console.log('this.pageNumber', this.pageNumber);
-            console.log('this.currentPage', this.currentPage);
-            console.log('this.itemsPerPage', this.itemsPerPage);
             await this.$emit('goto-page', this.currentPage, this.itemsPerPage);
         },
     },
