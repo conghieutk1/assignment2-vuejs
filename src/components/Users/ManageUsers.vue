@@ -297,7 +297,7 @@ export default {
 
         btnUser() {
             this.$store.dispatch('auth/logout');
-            this.$router.replace('/login');
+            this.$router.replace('/login-using-vee');
         },
         async handleGotoPage(pageNumber, itemsPerPage) {
             try {

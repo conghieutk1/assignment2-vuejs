@@ -210,6 +210,11 @@ h3 {
 }
 .error-message {
     padding: 0 !important;
+    width: fit-content;
+    text-align: left;
+    font-size: 15px;
+    font-weight: 400;
+    line-height: 20px;
     color: #ff0000;
 }
 .signup {
@@ -219,6 +224,10 @@ h3 {
     text-align: center;
     cursor: pointer;
     color: #0f60ff !important;
+}
+.signup:hover,
+.forgotPw:hover {
+    color: rgb(33, 33, 190) !important;
 }
 form .error {
     color: #ff0000;

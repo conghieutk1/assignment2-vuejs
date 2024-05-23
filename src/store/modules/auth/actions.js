@@ -15,11 +15,12 @@ export default {
         const responseData = await response.json();
         console.log('res =', responseData);
         if (!response.ok) {
-            const error = new Error(
-                responseData.message ||
-                    'Failed to authenticate. Check your login data.'
-            );
-            throw error;
+            // const error = new Error(responseData.error.message);
+            let errorMessage = responseData.error.message;
+            if (errorMessage == 'INVALID_LOGIN_CREDENTIALS') {
+                throw 'Email hoặc mật khẩu không chính xác';
+            }
+            throw 'Có lỗi xảy ra, vui lòng thử lại sau';
         }
 
         const expiresIn = +responseData.expiresIn * 1000;

@@ -324,7 +324,7 @@ export default {
         },
         btnUser() {
             this.$store.dispatch('auth/logout');
-            this.$router.replace('/login');
+            this.$router.replace('/login-using-vee');
         },
         formatNumber(number) {
             return number.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',');

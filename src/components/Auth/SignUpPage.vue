@@ -88,7 +88,7 @@ export default {
             this.$router.replace(redirectUrl);
         },
         gotoLogin() {
-            this.$router.replace('/login');
+            this.$router.replace('/login-using-vee');
         },
     },
 };

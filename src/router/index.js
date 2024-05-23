@@ -4,12 +4,13 @@ import SignUp from '../components/Auth/SignUpPage.vue';
 import ManageUsers from '../components/Users/ManageUsers.vue';
 import ManageProducts from '../components/Products/ManageProducts.vue';
 import NotFound from '../components/Pages/NotFound';
+import LoginUsingVee from '../components/LoginUsingVee.vue';
 // import store from '../store/index';
 
 const router = createRouter({
     history: createWebHistory(),
     routes: [
-        { path: '/', redirect: '/login' },
+        { path: '/', redirect: '/login-using-vee' },
         {
             name: 'login',
             path: '/login',
@@ -34,6 +35,11 @@ const router = createRouter({
             meta: { requiresAuth: true },
         },
         { path: '/:notFound(.*)', component: NotFound },
+        {
+            path: '/login-using-vee',
+            component: LoginUsingVee,
+            meta: { requiresUnauth: true },
+        },
     ],
     linkActiveClass: 'active',
 });
@@ -41,7 +47,7 @@ const router = createRouter({
 router.beforeEach(function (to, _, next) {
     const isAuthenticated = localStorage.getItem('token');
     if (to.meta.requiresAuth && !isAuthenticated) {
-        next('/login');
+        next('/login-using-vee');
     } else if (to.meta.requiresUnauth && isAuthenticated) {
         next('/manage-user');
     } else {
